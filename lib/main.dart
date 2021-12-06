@@ -1,25 +1,27 @@
 import 'package:calculator_demo/buttons.dart';
 import 'package:flutter/material.dart';
 import 'package:math_expressions/math_expressions.dart';
+import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
+  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      home: MyHomePage(),
     );
   }
 }
 
-class HomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget {
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<MyHomePage> createState() => _MyHomePageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _MyHomePageState extends State<MyHomePage> {
   final List<String> buttons = [
     'C',
     'DEL',
@@ -49,11 +51,27 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFFCBBCE7),
+      backgroundColor: Color(0xFF292D32),
       body: Column(
         children: [
           Expanded(
             child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.8),
+                    offset: Offset(-6.0, -6.0),
+                    blurRadius: 16.0,
+                  ),
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    offset: Offset(6.0, 6.0),
+                    blurRadius: 16.0,
+                  ),
+                ],
+                color: Color(0xFFEFEEEE),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -77,9 +95,28 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
+          SizedBox(
+            width: 10.0,
+          ),
           Expanded(
             flex: 2,
             child: Container(
+              decoration: BoxDecoration(
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.white.withOpacity(0.8),
+                    offset: Offset(-6.0, -6.0),
+                    blurRadius: 16.0,
+                  ),
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.1),
+                    offset: Offset(6.0, 6.0),
+                    blurRadius: 16.0,
+                  ),
+                ],
+                color: Color(0xFF292D32),
+                borderRadius: BorderRadius.circular(12.0),
+              ),
               child: GridView.builder(
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 4),
@@ -95,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       buttonText: buttons[index],
                       color: Colors.green,
-                      textcolor: Colors.white,
+                      textcolor: Colors.black,
                     );
                     //delete
                   } else if (index == 1) {
@@ -108,7 +145,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       buttonText: buttons[index],
                       color: Colors.red,
-                      textcolor: Colors.white,
+                      textcolor: Colors.black,
                     );
                   }
                   //equal
@@ -121,7 +158,7 @@ class _HomePageState extends State<HomePage> {
                       },
                       buttonText: buttons[index],
                       color: Colors.red,
-                      textcolor: Colors.white,
+                      textcolor: Colors.black,
                     );
                   } else {
                     return MyButton(
